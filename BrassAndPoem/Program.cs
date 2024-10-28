@@ -130,12 +130,63 @@ void DeleteProduct(List<Product> products, List<ProductType> productTypes)
 
 void AddProduct(List<Product> products, List<ProductType> productTypes)
 {
-    throw new NotImplementedException();
+    int productTypeChoice = 0;
+    string productName = null;
+    decimal productPrice = 0;
+
+    Console.WriteLine("Enter the name of the product that you would like to add:");
+    productName = Console.ReadLine();
+
+    Console.WriteLine("Enter the price of the item:");
+    productPrice = decimal.Parse(Console.ReadLine());
+
+    Console.WriteLine("Enter a number for the product type:");
+    Console.WriteLine("1. Brass");
+    Console.WriteLine("2. Poetry");
+    productTypeChoice = int.Parse(Console.ReadLine());
+
+    Product newProduct = new Product();
+    newProduct.Name = productName;
+    newProduct.Price = productPrice;
+    newProduct.ProductTypeId = productTypeChoice;
+
+    products.Add(newProduct);
+
 }
 
 void UpdateProduct(List<Product> products, List<ProductType> productTypes)
 {
-    throw new NotImplementedException();
+    Console.WriteLine("Choose an item that you would like to update");
+    for (int i = 0; i < products.Count; i++)
+    {
+        Console.WriteLine($"{i + 1}. {products[i].Name}");
+    }
+    int userChoice = int.Parse(Console.ReadLine());
+    Product itemToUpdate = products[userChoice - 1];
+
+    Console.WriteLine("Please enter a new name for the item (leave blank if you don't want to change it):");
+    string newName = Console.ReadLine();
+
+    Console.WriteLine("Please enter a new price for the item (leave blank if you don't want to change it):");
+    string newPrice = Console.ReadLine();
+
+    Console.WriteLine("Please enter the product type of the item (leave blank if you don't want to change it):");
+    Console.WriteLine("1 = Brass");
+    Console.WriteLine("2 = Poetry");
+    string newProductTypeId = Console.ReadLine();
+
+    if (!string.IsNullOrEmpty(newName))
+    {
+        itemToUpdate.Name = newName;
+    }
+    if (!string.IsNullOrEmpty(newPrice))
+    {
+        itemToUpdate.Price = decimal.Parse(newPrice);
+    }
+    if (newProductTypeId == 1.ToString() || newProductTypeId == 2.ToString())
+    {
+        itemToUpdate.ProductTypeId = int.Parse(newProductTypeId);
+    }
 }
 
 // don't move or change this!
