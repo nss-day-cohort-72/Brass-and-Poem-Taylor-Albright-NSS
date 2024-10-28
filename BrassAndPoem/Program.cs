@@ -114,9 +114,18 @@ void DeleteProduct(List<Product> products, List<ProductType> productTypes)
     Console.WriteLine("Choose a product that you want to delete:");
     for (int i = 0; i < products.Count; i++)
     {
-        Console.Write($"{i + 1}. {products[i].Name}");
+        Console.WriteLine($"{i + 1}. {products[i].Name}");
     }
-    
+    int userChoice = int.Parse(Console.ReadLine());
+    try
+    {
+        products.Remove(products[userChoice - 1]);
+    }
+    catch(Exception ex)
+    {
+        Console.WriteLine($"Exception: {ex.Message}");
+        Console.WriteLine($"Please choose a proper option from the list");
+    }
 }
 
 void AddProduct(List<Product> products, List<ProductType> productTypes)
