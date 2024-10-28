@@ -49,19 +49,11 @@ List<ProductType> productTypes = new List<ProductType>()
 //put your greeting here
 
 Console.Write("Welcome to the Brass & Poem shop!");
-
+DisplayMenu();
 //implement your loop here
 int ?userChoice = null;
 while (userChoice != 6)
 {
-    Console.WriteLine("Select an option from the menu below:");
-    Console.WriteLine("1. Display Menu");
-    Console.WriteLine("2. Display All Products");
-    Console.WriteLine("3. Delete Product");
-    Console.WriteLine("4. Add Product");
-    Console.WriteLine("5. Update Product");
-    Console.WriteLine("6. Exit");
-
     userChoice = int.Parse(Console.ReadLine());
     switch(userChoice)
     {
@@ -87,17 +79,44 @@ while (userChoice != 6)
 
 void DisplayMenu()
 {
-    throw new NotImplementedException();
+    Console.WriteLine("");
+    Console.WriteLine("Select an option from the menu below:");
+    Console.WriteLine("1. Display Menu");
+    Console.WriteLine("2. Display All Products");
+    Console.WriteLine("3. Delete Product");
+    Console.WriteLine("4. Add Product");
+    Console.WriteLine("5. Update Product");
+    Console.WriteLine("6. Exit");
+    Console.WriteLine("");
 }
 
 void DisplayAllProducts(List<Product> products, List<ProductType> productTypes)
 {
-    throw new NotImplementedException();
+    List<Product> brassProducts = products.Where(product => product.ProductTypeId == 1).ToList();
+    List<Product> poetryProducts = products.Where(product => product.ProductTypeId == 2).ToList();
+    Console.WriteLine("");
+    Console.WriteLine("Brass products:");
+    for (int i = 0; i < brassProducts.Count; i++)
+    {
+        Console.WriteLine($"{i + 1}. {brassProducts[i].Name}: ${brassProducts[i].Price}");
+    }
+    Console.WriteLine("");
+    Console.WriteLine("Poetry products:");
+    for (int i = 0; i < poetryProducts.Count; i++)
+    {
+        Console.WriteLine($"{i + 1}. {poetryProducts[i].Name}: ${poetryProducts[i].Price}");
+    }
+    Console.WriteLine("");
 }
 
 void DeleteProduct(List<Product> products, List<ProductType> productTypes)
 {
-    throw new NotImplementedException();
+    Console.WriteLine("Choose a product that you want to delete:");
+    for (int i = 0; i < products.Count; i++)
+    {
+        Console.Write($"{i + 1}. {products[i].Name}");
+    }
+    
 }
 
 void AddProduct(List<Product> products, List<ProductType> productTypes)
