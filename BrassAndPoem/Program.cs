@@ -1,5 +1,4 @@
-﻿//create a "products" variable here to include at least five Product instances. Give them appropriate ProductTypeIds.
-List<Product> products = new List<Product>()
+﻿List<Product> products = new List<Product>()
 {
     new Product()
     {
@@ -32,7 +31,7 @@ List<Product> products = new List<Product>()
         ProductTypeId = 2,
     }
 };
-//create a "productTypes" variable here with a List of ProductTypes, and add "Brass" and "Poem" types to the List. 
+
 List<ProductType> productTypes = new List<ProductType>()
 {
     new ProductType()
@@ -46,11 +45,9 @@ List<ProductType> productTypes = new List<ProductType>()
         Id = 2
     }
 };
-//put your greeting here
 
 Console.Write("Welcome to the Brass & Poem shop!");
 DisplayMenu();
-//implement your loop here
 int ?userChoice = null;
 while (userChoice != 6)
 {
@@ -130,20 +127,16 @@ void DeleteProduct(List<Product> products, List<ProductType> productTypes)
 
 void AddProduct(List<Product> products, List<ProductType> productTypes)
 {
-    int productTypeChoice = 0;
-    string productName = null;
-    decimal productPrice = 0;
-
     Console.WriteLine("Enter the name of the product that you would like to add:");
-    productName = Console.ReadLine();
+    string productName = Console.ReadLine();
 
     Console.WriteLine("Enter the price of the item:");
-    productPrice = decimal.Parse(Console.ReadLine());
+    decimal productPrice = decimal.Parse(Console.ReadLine());
 
     Console.WriteLine("Enter a number for the product type:");
     Console.WriteLine("1. Brass");
     Console.WriteLine("2. Poetry");
-    productTypeChoice = int.Parse(Console.ReadLine());
+    int productTypeChoice = int.Parse(Console.ReadLine());
 
     Product newProduct = new Product();
     newProduct.Name = productName;
@@ -151,7 +144,6 @@ void AddProduct(List<Product> products, List<ProductType> productTypes)
     newProduct.ProductTypeId = productTypeChoice;
 
     products.Add(newProduct);
-
 }
 
 void UpdateProduct(List<Product> products, List<ProductType> productTypes)
@@ -175,19 +167,19 @@ void UpdateProduct(List<Product> products, List<ProductType> productTypes)
     Console.WriteLine("2 = Poetry");
     string newProductTypeId = Console.ReadLine();
 
-    if (!string.IsNullOrEmpty(newName))
+    if (newName != "")
     {
         itemToUpdate.Name = newName;
     }
-    if (!string.IsNullOrEmpty(newPrice))
+    if (newPrice != "")
     {
         itemToUpdate.Price = decimal.Parse(newPrice);
     }
-    if (newProductTypeId == 1.ToString() || newProductTypeId == 2.ToString())
+    if (newProductTypeId != "")
     {
         itemToUpdate.ProductTypeId = int.Parse(newProductTypeId);
     }
 }
 
-// don't move or change this!
+
 public partial class Program { }
